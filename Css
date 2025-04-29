@@ -1,0 +1,196 @@
+/* Reset & Globals */
+* {
+  box-sizing: border-box;       /* Include padding & border in element’s total width/height */ 0
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;      /* Smooth scrolling for in-page anchors */ 1
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #fafafa;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header & Navigation */
+header {
+  background: #f8f0e3;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;             /* Stick header to top on scroll */ 2
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav-links a {
+  position: relative;
+  transition: color 0.3s ease; /* Animate color on hover */ 3
+}
+.nav-links a:hover {
+  color: #b5651d;
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://source.unsplash.com/1200x400/?coffee-shop') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+.hero > * {
+  position: relative;
+}
+/* Entrance animation */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+} 4
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 1s ease both; /* Apply keyframe with easing */ 5
+}
+.hero p {
+  font-size: 1.2rem;
+  animation: fadeInDown 1s ease both;
+  animation-delay: 0.3s;
+}
+
+/* Menu Grid & Cards */
+.menu {
+  padding: 2rem;
+}
+.menu h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #444;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Subtle depth */ 6
+  padding: 1rem;
+  width: 180px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease; 7
+}
+.card.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.02); /* Lift & zoom on hover */ 8
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.card img {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+.card h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+.card p {
+  font-weight: bold;
+  color: #b5651d;
+}
+
+/* Contact Section */
+.contact {
+  background: #f4f4f4;
+  padding: 2rem;
+}
+.contact h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #444;
+}
+.contact form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.contact input,
+.contact textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease; 9
+}
+.contact input:focus,
+.contact textarea:focus {
+  border-color: #b5651d;         /* Highlight on focus */ 10
+  outline: none;
+}
+.contact button {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 4px;
+  background: #b5651d;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.contact button:hover {
+  background: #a04b1a;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .grid {
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
+  }
+} 11
